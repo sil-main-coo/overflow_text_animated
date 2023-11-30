@@ -35,7 +35,7 @@ import 'package:overflow_text_animated/overflow_text_animated.dart';
 
 # Usage
 
-<img src="https://github.com/sil-main-coo/overflow_text_animated/blob/main/display/example.gif?raw=true" align = "left">
+<img src="https://github.com/sil-main-coo/overflow_text_animated/blob/main/display/example.gif?raw=true" align = "left"/>
 
 `OverflowTextAnimated` is a _Stateful Widget_.
 Include it in your `build` method like:
