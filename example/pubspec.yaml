@@ -1,0 +1,25 @@
+name: overflow_text_animated_example
+description: Demonstrates how to use the overflow_text_animated plugin.
+
+environment:
+  sdk: '>=3.1.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  overflow_text_animated:
+    path: ../
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
