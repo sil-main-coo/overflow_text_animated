@@ -1,6 +1,6 @@
 name: overflow_text_animated
 description: A Flutter package project that handles text overflow with animation.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/sil-main-coo/overflow_text_animated
 maintainer: Truong Viet Hoang (@sil-main-coo)
 
