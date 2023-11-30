@@ -9,10 +9,19 @@ class OverflowTextAnimated extends StatefulWidget {
       this.curve = Curves.easeInOut})
       : super(key: key);
 
+  /// required properties
   final String text;
+
+  /// style of text
   final TextStyle? style;
+
+  /// [delay] is the break time between 2 animations
   final Duration delay;
+
+  /// [animateDuration] is the duration of the animation
   final Duration animateDuration;
+
+  /// motion curves of animation effects
   final Curve curve;
 
   @override
@@ -20,16 +29,24 @@ class OverflowTextAnimated extends StatefulWidget {
 }
 
 class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
+  /// Scroll controller of SingleChildScrollView wrap text
   final ScrollController _scrollController = ScrollController();
 
+  /// [_exceeded] save value overflow or not
   bool _exceeded = false;
+
   final int _maxLines = 1;
+
+  /// max lines of text. Now, only support 1 line
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (_exceeded) {
+        /// if text is overflow
+        /// scroll to end and wait delay
+        /// then scroll to top
         while (true) {
           await Future.delayed(widget.delay);
           if (_scrollController.hasClients) {
@@ -54,7 +71,9 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
 
   @override
   void dispose() {
+    /// dispose controller
     _scrollController.dispose();
+
     super.dispose();
   }
 
@@ -81,6 +100,7 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
 
       tp.layout(maxWidth: size.maxWidth);
 
+      /// check overflow
       _exceeded = tp.didExceedMaxLines;
 
       return SingleChildScrollView(
