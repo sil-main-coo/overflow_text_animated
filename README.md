@@ -58,4 +58,4 @@ OverflowTextAnimated is used as default text widget. It has many configurable pr
 - `animateDuration` – is the duration of the animation
 - `delay` – is the break time between 2 animations
 
-**Note:** You might come up with an issue that the `text` does not get updated with `setState` as shown [here](https://github.com/aagarwal1012/Animated-Text-Kit/issues/27). The solution to this, is a key that changes based on the text. For reference, watch [this](https://www.youtube.com/watch?v=kn0EOS-ZiIc) video.
+**Note:** Widget is only available when its parent has a specified width. So in the example, I've wrapped it with Extended Widget.
