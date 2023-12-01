@@ -1,11 +1,7 @@
-## 0.0.4
+## 0.0.5
 
 * Add `infiniteLoop` animation
 * Update README
-
-## 0.0.2
-
-* Optimize pub point
 
 ## 0.0.1
 
