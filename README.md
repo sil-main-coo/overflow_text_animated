@@ -10,7 +10,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  overflow_text_animated: ^0.0.3
+  overflow_text_animated: ^0.0.4
 ```
 
 ### 2. Install it
