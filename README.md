@@ -44,7 +44,7 @@ Include it in your `build` method like:
 
 ```dart
 OverflowTextAnimated(
-  overflowText,
+  text: overflowText,
   style: descriptionStyle,
   curve: Curves.fastEaseInToSlowEaseOut,
   animation: OverFlowTextAnimations.scrollOpposite,
@@ -62,4 +62,4 @@ OverflowTextAnimated is used as default text widget. It has many configurable pr
 - `animateDuration` – is the duration of the animation
 - `delay` – is the break time between 2 animations
 
-**Note:** Widget is only available when its parent has a specified width. So in the example, I've wrapped it with Extended Widget.
+**Note:** Widget is only available when its parent has a specified width.
