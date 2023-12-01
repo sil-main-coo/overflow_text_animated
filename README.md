@@ -1,4 +1,4 @@
-A plugin that displays overflowed text in a different way
+A plugin that displays overflowed text in a different way:
 
 <p><img src="https://github.com/sil-main-coo/overflow_text_animated/blob/main/display/example.gif?raw=true"/></p>
 
