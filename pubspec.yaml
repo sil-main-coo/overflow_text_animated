@@ -5,8 +5,8 @@ homepage: https://github.com/sil-main-coo/overflow_text_animated
 maintainer: Truong Viet Hoang (@sil-main-coo)
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: '>=2.17.0 <4.0.0'
+  flutter: '>=3.0.0'
 
 dependencies:
   flutter:
