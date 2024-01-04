@@ -141,7 +141,7 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
 
   /// Function listens for scroll event and checks scroll position
   void _scrollListener() {
-    if (_scrollController.position.pixels >
+    if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent) {
       setState(() {
         /// If the scroll position is near the end, add new text
