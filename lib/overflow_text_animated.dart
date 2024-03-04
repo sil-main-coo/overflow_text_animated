@@ -129,20 +129,23 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
 
   /// Auto scroll
   void _autoScroll() {
-    setState(() {
-      _scrollPosition += widget.scrollSpace;
-      _scrollController.animateTo(
-        _scrollPosition,
-        duration: widget.animateDuration,
-        curve: Curves.linear,
-      );
-    });
+    if (mounted) {
+      setState(() {
+        _scrollPosition += widget.scrollSpace;
+        _scrollController.animateTo(
+          _scrollPosition,
+          duration: widget.animateDuration,
+          curve: Curves.linear,
+        );
+      });
+    }
   }
 
   /// Function listens for scroll event and checks scroll position
   void _scrollListener() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent) {
+    if (mounted &&
+        _scrollController.position.pixels >=
+            _scrollController.position.maxScrollExtent) {
       setState(() {
         /// If the scroll position is near the end, add new text
         _text += '$_spaces${widget.text}';
