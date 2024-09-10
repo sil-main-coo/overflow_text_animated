@@ -70,6 +70,8 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
   /// [infiniteLoop] - save position of scroll
   double _scrollPosition = 0.0;
 
+  Timer? _timer;
+
   @override
   void initState() {
     super.initState();
@@ -89,6 +91,15 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
         }
       }
     });
+  }
+
+  @override
+  void didUpdateWidget(covariant OverflowTextAnimated oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.text != oldWidget.text) {
+      _text = widget.text;
+    }
   }
 
   Future _handlerScrollOpposite() async {
@@ -122,7 +133,7 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
     _scrollController.addListener(_scrollListener);
 
     /// Auto scroll with periodic
-    Timer.periodic(widget.animateDuration, (Timer timer) {
+    _timer = Timer.periodic(widget.animateDuration, (Timer timer) {
       _autoScroll();
     });
   }
@@ -152,45 +163,49 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, size) {
-      final span = TextSpan(
-        text: _text,
-        style: widget.style,
-      );
-
-      final tp = TextPainter(
-          maxLines: _maxLines,
-          textAlign: TextAlign.left,
-          textDirection: TextDirection.ltr,
-          text: span,
-          strutStyle: StrutStyle(
-            fontSize: widget.style?.fontSize,
-            fontWeight: widget.style?.fontWeight,
-            height: widget.style?.fontSize,
-            fontStyle: widget.style?.fontStyle,
-            fontFamily: widget.style?.fontFamily,
-          ));
-
-      tp.layout(maxWidth: size.maxWidth);
-
-      /// check overflow
-      _exceeded = tp.didExceedMaxLines;
-
-      return SingleChildScrollView(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        physics: const NeverScrollableScrollPhysics(),
-        child: Text.rich(
-          span,
-          maxLines: _maxLines,
+    return LayoutBuilder(
+      builder: (context, size) {
+        final span = TextSpan(
+          text: _text,
           style: widget.style,
-        ),
-      );
-    });
+        );
+
+        final tp = TextPainter(
+            maxLines: _maxLines,
+            textAlign: TextAlign.left,
+            textDirection: TextDirection.ltr,
+            text: span,
+            strutStyle: StrutStyle(
+              fontSize: widget.style?.fontSize,
+              fontWeight: widget.style?.fontWeight,
+              height: widget.style?.fontSize,
+              fontStyle: widget.style?.fontStyle,
+              fontFamily: widget.style?.fontFamily,
+            ));
+
+        tp.layout(maxWidth: size.maxWidth);
+
+        /// check overflow
+        _exceeded = tp.didExceedMaxLines;
+
+        return SingleChildScrollView(
+          controller: _scrollController,
+          scrollDirection: Axis.horizontal,
+          physics: const NeverScrollableScrollPhysics(),
+          child: Text.rich(
+            span,
+            maxLines: _maxLines,
+            style: widget.style,
+          ),
+        );
+      },
+    );
   }
 
   @override
   void dispose() {
+    _timer?.cancel();
+
     /// dispose controller
     _scrollController.dispose();
     super.dispose();
